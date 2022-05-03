@@ -1,8 +1,11 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const OrderSetting = () => {
+  const { sidebar } = useSelector((state) => state);
+
   return (
-    <div className="order-setting flex aic jc">
+    <div className={`order-setting flex aic jc ${sidebar ? "show" : "hid"}`}>
       <div className="wrap flex aic jc flex-col">
         <div className="feedback-sec flex">
           <div className="dec s12 cfff b6">

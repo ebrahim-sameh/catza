@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
 import ManageSearchOutlinedIcon from "@mui/icons-material/ManageSearchOutlined";
+import { useDispatch, useSelector } from "react-redux";
 
 export const NewOrder = () => {
+  const { sidebar } = useSelector((state) => state);
   const [step, setStep] = useState("PROCESSING");
   const [activeTab, setActiveTab] = useState(true);
   const [activeTab2, setActiveTab2] = useState(false);
@@ -118,7 +120,7 @@ export const NewOrder = () => {
     );
   };
   return (
-    <div className="new-orders flex aic jc">
+    <div className={`new-orders flex aic jc  ${sidebar ? "hid" : "show"}`}>
       <div className="wrap flex aic flex-col">
         <div className="feedback-sec flex">
           <div className="dec s12 cfff b6">

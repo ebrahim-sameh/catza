@@ -3,12 +3,14 @@ import Switch from "@mui/material/Switch";
 import { DropDownIcon } from "../Icons";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import InsightsOutlinedIcon from "@mui/icons-material/InsightsOutlined";
+import { useDispatch, useSelector } from "react-redux";
 
 const AdvanceSetup = () => {
+  const { sidebar } = useSelector((state) => state);
   const [show, setShow] = useState(false);
 
   return (
-    <div className="addance-setup flex aic jc mt">
+    <div className={`addance-setup flex aic jc mt ${sidebar ? "show" : "hid"}`}>
       <div className="wrap flex aic jc">
         <div className="payment-lists flex flex-col">
           {/* First List */}

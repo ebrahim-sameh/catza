@@ -4,14 +4,15 @@ import Sidebar from "../components/Sidebar";
 
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import LocalAtmIcon from "@mui/icons-material/LocalAtm";
+import { useDispatch, useSelector } from "react-redux";
 
 const Dashboard = () => {
   const history = useHistory();
-
+  const { sidebar } = useSelector((state) => state);
   //   console.log("This is my history", history?.location?.pathname.split("/"));
 
   return (
-    <div className="dashboard-page flex aic jc">
+    <div className={`dashboard-page flex aic jc ${sidebar ? "show" : "hid"}`}>
       <div className="wrap flex aic flex-col">
         <div className="feedback-sec flex">
           <div className="dec s12 cfff b6">

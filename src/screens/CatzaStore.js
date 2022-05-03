@@ -9,8 +9,10 @@ import BlockOutlinedIcon from "@mui/icons-material/BlockOutlined";
 import InventoryOutlinedIcon from "@mui/icons-material/InventoryOutlined";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
 import LanguageOutlinedIcon from "@mui/icons-material/LanguageOutlined";
+import { useDispatch, useSelector } from "react-redux";
 
 const CatzaStore = () => {
+  const { sidebar } = useSelector((state) => state);
   const [checked, setChecked] = useState(true);
   const [checked2, setChecked2] = useState(true);
 
@@ -21,7 +23,7 @@ const CatzaStore = () => {
     setChecked2(event.target.checked);
   };
   return (
-    <div className="catza-store flex aic jc">
+    <div className={`catza-store flex aic jc ${sidebar ? "show" : "hid"}`}>
       <div className="wrap flex aic jc flex-col">
         <div className="store flex aic mt">
           <img className="store-img" src="/images/avatar-02.png" />

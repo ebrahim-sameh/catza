@@ -157,14 +157,77 @@ body {
   }
 }
 
+.sidebar-overlay {
+  @include media("<=tablet") {
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    min-height: 100vh;
+    &.sho {
+      opacity: 1;
+      visibility: visible;
+    }
+    &.hid {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+}
+// Header DashBoard
+.header-db {
+  padding: 10px 40px;
+  position: sticky;
+  top: 0;
+  z-index: 11;
+  margin-left: 250px;
+  background-color: #fff;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
+  &.show {
+    margin-left: 0px;
+  }
+  &.hid {
+    margin-left: 250px;
+    @include media(">=phone", "<=480px") {
+      margin-left: 40px;
+    }
+  }
+  .wrap {
+    width: 1400px;
+    margin: 0 auto;
+    .left {
+      flex: 1;
+      .menu-icon {
+        margin-right: 20px;
+        border-radius: 50%;
+        cursor: pointer;
+        padding: 8px;
+        @include anim;
+        display: none;
+        @include media("<=desktop") {
+          display: flex;
+        }
+        &:hover {
+          background-color: #eee;
+        }
+        .ico {
+        }
+      }
+    }
+    .rigth {
+      flex: 1;
+    }
+  }
+}
+
 //Login Page
 .login-page {
   width: 100%;
   height: calc(100vh - 100px);
   .wrap {
+    overflow: auto;
     .login-block {
       width: 500px;
-      height: 440px;
+      // height: 440px;
       padding: 20px 40px;
       border-radius: 4px;
       border: 1.5px solid #4d4d4db2;
@@ -214,6 +277,7 @@ body {
         }
       }
       .txt-box {
+        margin-bottom: 12px;
         .txt {
           font-size: 14px;
           width: 280px;
@@ -1019,12 +1083,26 @@ body {
 
 //DashBoard
 .dashboard-page {
-  // min-height: calc(100vh - 80px);
-  // max-height: calc(100vh - 80px);
+  margin-left: 300px;
+  padding-top: 40px;
+  &.show {
+    margin-left: 0px;
+  }
+  &.hid {
+    margin-left: 0px;
+    @include media(">=phone", "<=480px") {
+      margin-left: 0px;
+    }
+  }
   .wrap {
     min-width: 600px;
     max-width: 600px;
     justify-content: center;
+    @include media("<=tablet") {
+      min-width: 100%;
+      max-width: 100%;
+      padding: 0px 3%;
+    }
     .feedback-sec {
       width: 100%;
       border-radius: 4px;
@@ -1107,10 +1185,16 @@ body {
       .action-box {
         margin: 20px 0;
         justify-content: space-around;
+        @include media(">=phone", "<=480px") {
+          flex-wrap: wrap;
+        }
         .card {
           padding: 22px;
           border-radius: 8px;
           box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+          @include media(">=phone", "<=480px") {
+            margin-bottom: 30px;
+          }
         }
       }
     }
@@ -1132,8 +1216,27 @@ body {
   background: #fff;
   z-index: 98;
   // margin-top: 80px;
+  @include media("<=desktop") {
+    inset: 0;
+    // background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    min-height: 100vh;
+    &.sho {
+      opacity: 1;
+      visibility: visible;
+    }
+    &.hid {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+  @include media(">=phone", "<=480px") {
+    width: 70px;
+  }
   .wrap {
     width: 100%;
+    @include media(">=phone", "<=480px") {
+    }
     .item-data {
       padding: 15px 10px;
       .item-img {
@@ -1147,6 +1250,9 @@ body {
       }
       .item-name {
         flex: 1;
+        @include media(">=phone", "<=480px") {
+          display: none;
+        }
         .name {
           text-align: center;
         }
@@ -1170,6 +1276,9 @@ body {
         }
         .ico {
           margin: 0 20px;
+          @include media(">=phone", "<=480px") {
+            margin: 0 3px;
+          }
           svg {
             margin-top: 9px;
             path {
@@ -1197,9 +1306,16 @@ body {
         color: #848484;
         font-size: 15px !important;
         font-weight: 500 !important;
+        @include media(">=phone", "<=480px") {
+          display: none;
+        }
       }
       .ico {
         margin: 0 20px;
+        @include media(">=phone", "<=480px") {
+          margin-right: 4px;
+          margin-left: 6px;
+        }
         svg {
           margin-top: 9px;
           path {
@@ -1225,6 +1341,10 @@ body {
         @include anim;
         border-bottom: 1.2px solid #dde0e3;
         border-left: 5px solid transparent;
+        @include media(">=phone", "<=480px") {
+          margin: 0;
+          padding: 12px 14px;
+        }
         &.active {
           background-color: rgba(51, 102, 255, 0.08);
           border-left: 5px solid $themeColor;
@@ -1267,6 +1387,9 @@ body {
           color: #848484;
           font-size: 15px !important;
           font-weight: 500 !important;
+          @include media(">=phone", "<=480px") {
+            display: none;
+          }
         }
       }
     }
@@ -1286,10 +1409,26 @@ body {
 }
 //New Orders
 .new-orders {
+  margin-left: 300px;
+  padding-top: 40px;
+  &.show {
+    margin-left: 0px;
+  }
+  &.hid {
+    margin-left: 300px;
+    @include media(">=phone", "<=480px") {
+      margin-left: 80px;
+    }
+  }
   .wrap {
     min-width: 600px;
     max-width: 600px;
     justify-content: center;
+    @include media(">=phone", "<=480px") {
+      min-width: 100%;
+      max-width: 100%;
+      padding: 0 5%;
+    }
     .feedback-sec {
       width: 100%;
       border-radius: 4px;
@@ -1417,10 +1556,29 @@ body {
 
 //Customers
 .customers {
+  margin-left: 300px;
+  padding-top: 40px;
+  &.show {
+    margin-left: 0px;
+  }
+  &.hid {
+    margin-left: 0px;
+    @include media(">=desktop") {
+      margin-left: 300px;
+    }
+    @include media(">=phone", "<=480px") {
+      margin-left: 0px;
+    }
+  }
   .wrap {
     min-width: 600px;
     max-width: 600px;
     justify-content: center;
+    @include media(">=phone", "<=480px") {
+      min-width: 100%;
+      max-width: 100%;
+      padding: 0 5%;
+    }
     .feedback-sec {
       width: 100%;
       border-radius: 4px;
@@ -1478,10 +1636,29 @@ body {
 }
 
 .product {
+  // margin-left: 300px;
+  padding-top: 40px;
+  &.show {
+    margin-left: 0px;
+  }
+  &.hid {
+    margin-left: 0px;
+    @include media(">=desktop") {
+      margin-left: 300px;
+    }
+    @include media(">=phone", "<=480px") {
+      margin-left: 0px;
+    }
+  }
   .wrap {
     min-width: 600px;
     max-width: 600px;
     justify-content: center;
+    @include media(">=phone", "<=480px") {
+      min-width: 100%;
+      max-width: 100%;
+      padding: 0 5%;
+    }
     .filter-sec {
       border: none;
     }
@@ -1646,10 +1823,31 @@ body {
 }
 
 .forms {
+  padding-top: 40px;
+  &.show {
+    margin-left: 0px;
+    @include media(">=desktop") {
+      margin-left: 300px;
+    }
+  }
+  &.hid {
+    margin-left: 0px;
+    @include media(">=desktop") {
+      margin-left: 300px;
+    }
+    @include media(">=phone", "<=480px") {
+      margin-left: 0px;
+    }
+  }
   .wrap {
     min-width: 600px;
     max-width: 600px;
     justify-content: center;
+    @include media(">=phone", "<=480px") {
+      min-width: 100%;
+      max-width: 100%;
+      padding: 0 5%;
+    }
     .filter-sec {
       border: none;
     }
@@ -1719,10 +1917,31 @@ body {
 }
 
 .sale-team {
+  padding-top: 40px;
+  &.show {
+    margin-left: 0px;
+    @include media(">=desktop") {
+      margin-left: 300px;
+    }
+  }
+  &.hid {
+    margin-left: 0px;
+    @include media(">=desktop") {
+      margin-left: 300px;
+    }
+    @include media(">=phone", "<=480px") {
+      margin-left: 0px;
+    }
+  }
   .wrap {
     min-width: 600px;
     max-width: 600px;
     justify-content: center;
+    @include media(">=phone", "<=480px") {
+      min-width: 100%;
+      max-width: 100%;
+      padding: 0 5%;
+    }
     .add-new-prd {
       justify-content: space-between;
       margin: 10px 0;
@@ -1801,13 +2020,61 @@ body {
 }
 
 .catza-store {
+  padding-top: 40px;
+  &.show {
+    margin-left: 0px;
+    @include media(">=desktop") {
+      margin-left: 300px;
+    }
+  }
+  &.hid {
+    margin-left: 0px;
+    @include media(">=desktop") {
+      margin-left: 300px;
+    }
+    padding-top: 40px;
+    &.show {
+      margin-left: 0px;
+      @include media(">=desktop") {
+        margin-left: 300px;
+      }
+    }
+    &.hid {
+      margin-left: 0px;
+      @include media(">=desktop") {
+        margin-left: 300px;
+      }
+      @include media(">=phone", "<=480px") {
+        margin-left: 0px;
+      }
+    }
+    .wrap {
+      min-width: 600px;
+      max-width: 600px;
+      justify-content: center;
+      @include media(">=phone", "<=480px") {
+        min-width: 100%;
+        max-width: 100%;
+        padding: 0 5%;
+      }
+      margin-left: 0px;
+    }
+  }
   .wrap {
     min-width: 600px;
     max-width: 600px;
     justify-content: center;
+    @include media(">=phone", "<=480px") {
+      min-width: 100%;
+      max-width: 100%;
+      padding: 0 5%;
+    }
     .store {
       width: 100%;
       justify-content: space-between;
+      @include media(">=phone", "<=480px") {
+        flex-direction: column;
+      }
       .store-img {
         height: 100px;
         width: 100px;
@@ -1826,6 +2093,9 @@ body {
         .action {
           width: 100%;
           justify-content: space-between;
+          @include media(">=phone", "<=480px") {
+            flex-direction: column;
+          }
           .btn-edit {
             margin-right: 20px;
             font-size: 14px;
@@ -1836,6 +2106,10 @@ body {
             border-color: $themeColor;
             background-color: #eff3ff;
             @include anim;
+            @include media(">=phone", "<=480px") {
+              margin-right: 0;
+              margin-bottom: 15px;
+            }
             &:hover {
               background-color: #dee6fd;
             }
@@ -1892,10 +2166,55 @@ body {
 }
 
 .coupons {
+  padding-top: 40px;
+  &.show {
+    margin-left: 0px;
+    @include media(">=desktop") {
+      margin-left: 300px;
+    }
+  }
+  &.hid {
+    margin-left: 0px;
+    @include media(">=desktop") {
+      margin-left: 300px;
+    }
+    padding-top: 40px;
+    &.show {
+      margin-left: 0px;
+      @include media(">=desktop") {
+        margin-left: 300px;
+      }
+    }
+    &.hid {
+      margin-left: 0px;
+      @include media(">=desktop") {
+        margin-left: 300px;
+      }
+      @include media(">=phone", "<=480px") {
+        margin-left: 0px;
+      }
+    }
+    .wrap {
+      min-width: 600px;
+      max-width: 600px;
+      justify-content: center;
+      @include media(">=phone", "<=480px") {
+        min-width: 100%;
+        max-width: 100%;
+        padding: 0 5%;
+      }
+      margin-left: 0px;
+    }
+  }
   .wrap {
     min-width: 600px;
     max-width: 600px;
     justify-content: center;
+    @include media(">=phone", "<=480px") {
+      min-width: 100%;
+      max-width: 100%;
+      padding: 0 5%;
+    }
     .add-new-prd {
       justify-content: space-between;
       margin: 10px 0;
@@ -1932,10 +2251,55 @@ body {
 }
 
 .shipping-new-page {
+  padding-top: 40px;
+  &.show {
+    margin-left: 0px;
+    @include media(">=desktop") {
+      margin-left: 300px;
+    }
+  }
+  &.hid {
+    margin-left: 0px;
+    @include media(">=desktop") {
+      margin-left: 300px;
+    }
+    padding-top: 40px;
+    &.show {
+      margin-left: 0px;
+      @include media(">=desktop") {
+        margin-left: 300px;
+      }
+    }
+    &.hid {
+      margin-left: 0px;
+      @include media(">=desktop") {
+        margin-left: 300px;
+      }
+      @include media(">=phone", "<=480px") {
+        margin-left: 0px;
+      }
+    }
+    .wrap {
+      min-width: 600px;
+      max-width: 600px;
+      justify-content: center;
+      @include media(">=phone", "<=480px") {
+        min-width: 100%;
+        max-width: 100%;
+        padding: 0 5%;
+      }
+      margin-left: 0px;
+    }
+  }
   .wrap {
     min-width: 600px;
     max-width: 600px;
     justify-content: center;
+    @include media(">=phone", "<=480px") {
+      min-width: 100%;
+      max-width: 100%;
+      padding: 0 5%;
+    }
     .desc-block {
       width: 100%;
       padding: 12px;
@@ -2006,10 +2370,54 @@ body {
 }
 
 .order-setting {
+  &.show {
+    margin-left: 0px;
+    @include media(">=desktop") {
+      margin-left: 300px;
+    }
+  }
+  &.hid {
+    margin-left: 0px;
+    @include media(">=desktop") {
+      margin-left: 300px;
+    }
+    padding-top: 40px;
+    &.show {
+      margin-left: 0px;
+      @include media(">=desktop") {
+        margin-left: 300px;
+      }
+    }
+    &.hid {
+      margin-left: 0px;
+      @include media(">=desktop") {
+        margin-left: 300px;
+      }
+      @include media(">=phone", "<=480px") {
+        margin-left: 0px;
+      }
+    }
+    .wrap {
+      min-width: 600px;
+      max-width: 600px;
+      justify-content: center;
+      @include media(">=phone", "<=480px") {
+        min-width: 100%;
+        max-width: 100%;
+        padding: 0 5%;
+      }
+      margin-left: 0px;
+    }
+  }
   .wrap {
     min-width: 600px;
     max-width: 600px;
     justify-content: center;
+    @include media(">=phone", "<=480px") {
+      min-width: 100%;
+      max-width: 100%;
+      padding: 0 5%;
+    }
     .feedback-sec {
       width: 100%;
       border-radius: 4px;
@@ -2046,10 +2454,55 @@ body {
 }
 
 .payment-page {
+  padding-top: 40px;
+  &.show {
+    margin-left: 0px;
+    @include media(">=desktop") {
+      margin-left: 300px;
+    }
+  }
+  &.hid {
+    margin-left: 0px;
+    @include media(">=desktop") {
+      margin-left: 300px;
+    }
+    padding-top: 40px;
+    &.show {
+      margin-left: 0px;
+      @include media(">=desktop") {
+        margin-left: 300px;
+      }
+    }
+    &.hid {
+      margin-left: 0px;
+      @include media(">=desktop") {
+        margin-left: 300px;
+      }
+      @include media(">=phone", "<=480px") {
+        margin-left: 0px;
+      }
+    }
+    .wrap {
+      min-width: 600px;
+      max-width: 600px;
+      justify-content: center;
+      @include media(">=phone", "<=480px") {
+        min-width: 100%;
+        max-width: 100%;
+        padding: 0 5%;
+      }
+      margin-left: 0px;
+    }
+  }
   .wrap {
     min-width: 600px;
     max-width: 600px;
     justify-content: center;
+    @include media(">=phone", "<=480px") {
+      min-width: 100%;
+      max-width: 100%;
+      padding: 0 5%;
+    }
     .payment-lists {
       width: 100%;
       .list-item {
@@ -2154,10 +2607,55 @@ body {
 }
 
 .checkout-page {
+  padding-top: 40px;
+  &.show {
+    margin-left: 0px;
+    @include media(">=desktop") {
+      margin-left: 300px;
+    }
+  }
+  &.hid {
+    margin-left: 0px;
+    @include media(">=desktop") {
+      margin-left: 300px;
+    }
+    padding-top: 40px;
+    &.show {
+      margin-left: 0px;
+      @include media(">=desktop") {
+        margin-left: 300px;
+      }
+    }
+    &.hid {
+      margin-left: 0px;
+      @include media(">=desktop") {
+        margin-left: 300px;
+      }
+      @include media(">=phone", "<=480px") {
+        margin-left: 0px;
+      }
+    }
+    .wrap {
+      min-width: 600px;
+      max-width: 600px;
+      justify-content: center;
+      @include media(">=phone", "<=480px") {
+        min-width: 100%;
+        max-width: 100%;
+        padding: 0 5%;
+      }
+      margin-left: 0px;
+    }
+  }
   .wrap {
     min-width: 600px;
     max-width: 600px;
     justify-content: center;
+    @include media(">=phone", "<=480px") {
+      min-width: 100%;
+      max-width: 100%;
+      padding: 0 5%;
+    }
     .block-fb {
       width: 100%;
       border-radius: 8px;
@@ -2183,10 +2681,54 @@ body {
 }
 
 .addance-setup {
+  &.show {
+    margin-left: 0px;
+    @include media(">=desktop") {
+      margin-left: 300px;
+    }
+  }
+  &.hid {
+    margin-left: 0px;
+    @include media(">=desktop") {
+      margin-left: 300px;
+    }
+    padding-top: 40px;
+    &.show {
+      margin-left: 0px;
+      @include media(">=desktop") {
+        margin-left: 300px;
+      }
+    }
+    &.hid {
+      margin-left: 0px;
+      @include media(">=desktop") {
+        margin-left: 300px;
+      }
+      @include media(">=phone", "<=480px") {
+        margin-left: 0px;
+      }
+    }
+    .wrap {
+      min-width: 600px;
+      max-width: 600px;
+      justify-content: center;
+      @include media(">=phone", "<=480px") {
+        min-width: 100%;
+        max-width: 100%;
+        padding: 0 5%;
+      }
+      margin-left: 0px;
+    }
+  }
   .wrap {
     min-width: 600px;
     max-width: 600px;
     justify-content: center;
+    @include media(">=phone", "<=480px") {
+      min-width: 100%;
+      max-width: 100%;
+      padding: 0 5%;
+    }
     .payment-lists {
       width: 100%;
       .list-item {
@@ -2284,10 +2826,54 @@ body {
 }
 
 .setting-page {
+  &.show {
+    margin-left: 0px;
+    @include media(">=desktop") {
+      margin-left: 300px;
+    }
+  }
+  &.hid {
+    margin-left: 0px;
+    @include media(">=desktop") {
+      margin-left: 300px;
+    }
+    padding-top: 40px;
+    &.show {
+      margin-left: 0px;
+      @include media(">=desktop") {
+        margin-left: 300px;
+      }
+    }
+    &.hid {
+      margin-left: 0px;
+      @include media(">=desktop") {
+        margin-left: 300px;
+      }
+      @include media(">=phone", "<=480px") {
+        margin-left: 0px;
+      }
+    }
+    .wrap {
+      min-width: 600px;
+      max-width: 600px;
+      justify-content: center;
+      @include media(">=phone", "<=480px") {
+        min-width: 100%;
+        max-width: 100%;
+        padding: 0 5%;
+      }
+      margin-left: 0px;
+    }
+  }
   .wrap {
     min-width: 600px;
     max-width: 600px;
     justify-content: center;
+    @include media(">=phone", "<=480px") {
+      min-width: 100%;
+      max-width: 100%;
+      padding: 0 5%;
+    }
     .setting-block {
       width: 100%;
       padding: 14px;

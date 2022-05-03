@@ -4,15 +4,17 @@ import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOutlined";
 import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
+import { useDispatch, useSelector } from "react-redux";
 
 const Forms = () => {
+  const { sidebar } = useSelector((state) => state);
   const [checked, setChecked] = useState(true);
 
   const handleChange = (event) => {
     setChecked(event.target.checked);
   };
   return (
-    <div className="forms flex aic jc">
+    <div className={`forms flex aic jc ${sidebar ? "show" : "hid"}`}>
       <div className="wrap flex aic flex-col">
         <div className="filter-sec flex aic">
           <div className="search-box flex aic jc">

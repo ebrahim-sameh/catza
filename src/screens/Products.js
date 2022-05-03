@@ -5,8 +5,10 @@ import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOu
 import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
 import Dialog from "@mui/material/Dialog";
 import AddProducts from "../components/AddProducts";
+import { useDispatch, useSelector } from "react-redux";
 
 const Products = () => {
+  const { sidebar } = useSelector((state) => state);
   const [open, setOpen] = useState(false);
   const [checked, setChecked] = useState(true);
 
@@ -19,7 +21,7 @@ const Products = () => {
   };
 
   return (
-    <div className="product flex aic jc">
+    <div className={`product flex aic jc ${sidebar ? "show" : "hid"}`}>
       <div className="wrap flex aic flex-col">
         <div className="filter-sec flex aic">
           <div className="search-box flex aic jc">

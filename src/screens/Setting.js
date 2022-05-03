@@ -4,10 +4,12 @@ import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
+import { useDispatch, useSelector } from "react-redux";
 
 const Setting = () => {
+  const { sidebar } = useSelector((state) => state);
   return (
-    <div className="setting-page flex aic jc mt">
+    <div className={`setting-page flex aic jc mt ${sidebar ? "show" : "hid"}`}>
       <div className="wrap flex aic jc flex-col">
         <div className="setting-block flex flex-col">
           <div className="item flex aic">

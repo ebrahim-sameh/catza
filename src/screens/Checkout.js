@@ -1,8 +1,10 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const Checkout = () => {
+  const { sidebar } = useSelector((state) => state);
   return (
-    <div className="checkout-page flex aic jc mt">
+    <div className={`checkout-page flex aic jc mt ${sidebar ? "show" : "hid"}`}>
       <div className="wrap flex aic jc flex-col">
         <div className="block-fb flex aic">
           <div className="left flex flex-col">

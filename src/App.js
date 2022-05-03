@@ -2,12 +2,14 @@ import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Dialog from "@mui/material/Dialog";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // CSS
 import "./css/App.scss";
 
 // Screens
-import { Header } from "./components";
+import { Header, Header_Dashboard } from "./components";
 import Home from "./screens/Home";
 import Dashboard from "./screens/Dashboard";
 import Loign from "./screens/LoginPage";
@@ -32,23 +34,16 @@ import Setting from "./screens/Setting";
 
 function App() {
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.general);
-
+  // const { user } = useSelector((state) => state.general);
+  const { user, sidebar, isUser } = useSelector((state) => state);
+  var token = localStorage.getItem("token");
   return (
     <div className="App">
-      {user ? (
-        <div>
-          <BrowserRouter>
-            <Header />
-            <Route path="/" component={Home} exact />
-            <Route path="/login" component={Loign} exact />
-            <Route path="/signup" component={Signup} exact />
-          </BrowserRouter>
-        </div>
-      ) : (
+      {user || isUser || token ? (
         <div className="admin rel">
           <BrowserRouter>
             <Sidebar />
+            <Header_Dashboard />
             <Route path="/home" component={Dashboard} exact />
             <Route path="/admin/orders-new" component={NewOrder} exact />
             <Route path="/admin/customers" component={Customers} exact />
@@ -78,6 +73,16 @@ function App() {
               exact
             />
             <Route path="/admin/settings" component={Setting} exact />
+          </BrowserRouter>
+        </div>
+      ) : (
+        <div>
+          <BrowserRouter>
+            <ToastContainer />
+            <Header />
+            <Route path="/" component={Home} exact />
+            <Route path="/login" component={Loign} exact />
+            <Route path="/signup" component={Signup} exact />
           </BrowserRouter>
         </div>
       )}

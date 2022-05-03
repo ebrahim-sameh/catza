@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOutlined";
+import { useDispatch, useSelector } from "react-redux";
 
 const Coupons = () => {
+  const { sidebar } = useSelector((state) => state);
   return (
-    <div className="coupons flex aic jc">
+    <div className={`coupons flex aic jc ${sidebar ? "show" : "hid"}`}>
       <div className="wrap flex aic  jc flex-col">
         <div className="filter-sec flex aic">
           <div className="search-box flex aic jc">

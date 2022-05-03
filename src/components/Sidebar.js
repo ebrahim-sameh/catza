@@ -18,7 +18,12 @@ import Inventory2OutlinedIcon from "@mui/icons-material/Inventory2Outlined";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import SettingsInputAntennaOutlinedIcon from "@mui/icons-material/SettingsInputAntennaOutlined";
 
+import { useDispatch, useSelector } from "react-redux";
+
 export const Sidebar = () => {
+  const dispatch = useDispatch();
+  const { sidebar } = useSelector((state) => state);
+
   const [show, setShow] = useState(false);
   const [show2, setShow2] = useState(false);
 
@@ -127,7 +132,11 @@ export const Sidebar = () => {
       subMenu: [],
     },
   ];
-
+  useEffect(() => {
+    document.body.addEventListener("click", () =>
+      dispatch({ type: "SIDEBAR", payload: false })
+    );
+  }, []);
   const SubMenu = ({ data }) => {
     const { subMenu } = data;
     return (
@@ -148,7 +157,8 @@ export const Sidebar = () => {
     );
   };
   return (
-    <div className="sidebar abs">
+    // <div className={`sidebar-overlay abs anim ${sidebar ? "sho" : "hid"}`}>
+    <div className={`sidebar abs anim ${sidebar ? "sho" : "hid"}`}>
       <div className="wrap flex flex-col">
         <div className="item-data flex">
           <div className="item-img flex">
@@ -180,6 +190,7 @@ export const Sidebar = () => {
         ))}
       </div>
     </div>
+    // </div>
   );
 };
 

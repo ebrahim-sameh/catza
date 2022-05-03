@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Switch from "@mui/material/Switch";
+import { useDispatch, useSelector } from "react-redux";
 
 const ShippingNew = () => {
+  const { sidebar } = useSelector((state) => state);
   const [checked, setChecked] = useState(true);
   const [checked2, setChecked2] = useState(false);
   const [checked3, setChecked3] = useState(true);
@@ -16,7 +18,9 @@ const ShippingNew = () => {
     setChecked3(event.target.checked);
   };
   return (
-    <div className="shipping-new-page flex aic jc mt">
+    <div
+      className={`shipping-new-page flex aic jc mt ${sidebar ? "show" : "hid"}`}
+    >
       <div className="wrap flex aic jc flex-col">
         <div className="desc-block flex flex-col">
           <div className="desc-tag b6 s14">We moved zones and integrations</div>

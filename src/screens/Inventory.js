@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import ExitToAppOutlinedIcon from "@mui/icons-material/ExitToAppOutlined";
+import { useDispatch, useSelector } from "react-redux";
 
 const Inventory = () => {
+  const { sidebar } = useSelector((state) => state);
+
   return (
-    <div className="customers flex aic jc">
+    <div className={`customers flex aic jc ${sidebar ? "show" : "hid"}`}>
       <div className="wrap flex aic flex-col">
         <div className="filter-sec flex aic">
           <div className="search-box flex aic jc">

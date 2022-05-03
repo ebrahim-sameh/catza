@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Switch from "@mui/material/Switch";
 import { DropDownIcon } from "../Icons";
+import { useDispatch, useSelector } from "react-redux";
 
 const Payment = () => {
+  const { sidebar } = useSelector((state) => state);
   const [show, setShow] = useState(false);
   const [show3, setShow3] = useState(false);
   const [show2, setShow2] = useState(false);
@@ -21,7 +23,7 @@ const Payment = () => {
   };
 
   return (
-    <div className="payment-page flex aic jc mt">
+    <div className={`payment-page flex aic jc mt ${sidebar ? "show" : "hid"}`}>
       <div className="wrap flex aic jc flex-col">
         <div className="payment-lists flex flex-col">
           {/* First List */}

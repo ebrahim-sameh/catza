@@ -2,9 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ArrowIcon } from "../Icons";
 
+import { useDispatch, useSelector } from "react-redux";
+
 const Header = () => {
+  const dispatch = useDispatch();
+  const { sidebar } = useSelector((state) => state);
   return (
-    <div className="header-cmp flex aic sticky">
+    <div className={`header-cmp flex aic sticky `}>
       <div className="wrap flex aic">
         <div className="header-left flex">
           <Link to="/">

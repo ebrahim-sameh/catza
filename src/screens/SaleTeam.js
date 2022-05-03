@@ -3,8 +3,10 @@ import Switch from "@mui/material/Switch";
 import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOutlined";
+import { useDispatch, useSelector } from "react-redux";
 
 const SaleTeam = () => {
+  const { sidebar } = useSelector((state) => state);
   const [step, setStep] = useState("All");
   const [activeTab, setActiveTab] = useState(true);
   const [activeTab2, setActiveTab2] = useState(false);
@@ -136,7 +138,7 @@ const SaleTeam = () => {
     );
   };
   return (
-    <div className="sale-team flex aic jc">
+    <div className={`sale-team flex aic jc ${sidebar ? "show" : "hid"}`}>
       <div className="wrap flex aic flex-col">
         <div className="filter-sec flex aic">
           <div className="search-box flex aic jc">
